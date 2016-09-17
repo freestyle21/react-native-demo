@@ -1,6 +1,6 @@
 ## React Native Demo
 
-本项目是在学`React Native` 过程中写的一些demo，因为官网和社区都没有完整的可用的demo集，就自己整理下。
+本项目是在学`React Native` 过程中写的一些demo，因为官网和社区都没有完整的可用的demo集，就自己整理完善。
 
 ### 运行
 
