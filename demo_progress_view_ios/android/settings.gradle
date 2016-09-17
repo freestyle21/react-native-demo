@@ -1,0 +1,3 @@
+rootProject.name = 'demo_progress_view_ios'
+
+include ':app'
