@@ -1,0 +1,3 @@
+rootProject.name = 'demo_segmented_controll_ios'
+
+include ':app'

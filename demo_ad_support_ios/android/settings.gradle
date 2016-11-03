@@ -1,0 +1,3 @@
+rootProject.name = 'demo_ad_support_ios'
+
+include ':app'
