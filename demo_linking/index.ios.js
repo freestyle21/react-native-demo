@@ -7,46 +7,74 @@
 import React, { Component } from 'react';
 import {
   AppRegistry,
+  Linking,
+  TouchableOpacity,
   StyleSheet,
   Text,
   View
 } from 'react-native';
 
-export default class demo_linking extends Component {
+var UIExplorerBlock = require('./UIExplorerBlock');
+
+
+class OpenURLButton extends React.Component {
+  constructor(props){
+      super(props)
+
+      this.handleClick = this.handleClick.bind(this)
+  }
+
+  handleClick () {
+    Linking.canOpenURL(this.props.url).then(supported => {
+      if (supported) {
+        Linking.openURL(this.props.url);
+      } else {
+        console.log('Don\'t know how to open URI: ' + this.props.url);
+      }
+    });
+  };
+
   render() {
     return (
-      <View style={styles.container}>
-        <Text style={styles.welcome}>
-          Welcome to React Native!
-        </Text>
-        <Text style={styles.instructions}>
-          To get started, edit index.ios.js
-        </Text>
-        <Text style={styles.instructions}>
-          Press Cmd+R to reload,{'\n'}
-          Cmd+D or shake for dev menu
-        </Text>
-      </View>
+      <TouchableOpacity
+        onPress={this.handleClick}>
+        <View style={styles.button}>
+          <Text style={styles.text}>Open {this.props.url}</Text>
+        </View>
+      </TouchableOpacity>
     );
   }
 }
 
-const styles = StyleSheet.create({
+export default class demo_linking extends Component {
+  render() {
+    return (
+      <UIExplorerBlock title="Open external URLs">
+        <OpenURLButton url={'https://www.facebook.com'} />
+        <OpenURLButton url={'http://www.facebook.com'} />
+        <OpenURLButton url={'http://facebook.com'} />
+        <OpenURLButton url={'fb://notifications'} />
+        <OpenURLButton url={'geo:37.484847,-122.148386'} />
+        <OpenURLButton url={'tel:9876543210'} />
+      </UIExplorerBlock>
+    );
+  }
+}
+
+var styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: 'white',
+    padding: 10,
+    paddingTop: 30,
   },
-  welcome: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
+  button: {
+    padding: 10,
+    backgroundColor: '#3B5998',
+    marginBottom: 10,
   },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
+  text: {
+    color: 'white',
   },
 });
 

@@ -29,7 +29,6 @@ class ActionSheetExample extends React.Component {
   constructor(props) {
     super(props)
 
-    this.showActionSheet = this.showActionSheet.bind(this)
     this.state = {
       clicked: 'none'
     }
